@@ -1,0 +1,7 @@
+DNSGuard sample
+
+Command:
+  dnsguard example.com
+
+This file is a documentation fixture. Real reports are generated with:
+  dnsguard example.com --json reports/example.json --csv reports/example.csv
