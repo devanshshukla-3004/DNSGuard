@@ -36,6 +36,11 @@ class DNSResolver:
             except (dns.exception.DNSException, OSError) as exc:
                 data.errors[rtype] = str(exc)
 
+        try:
+            data.records["DMARC_TXT"] = self.query(f"_dmarc.{data.domain}", "TXT")
+        except (dns.exception.DNSException, OSError) as exc:
+            data.errors["DMARC_TXT"] = str(exc)
+
         for rtype in ("DNSKEY", "DS", "RRSIG"):
             try:
                 data.dnssec_records[rtype] = self.query(data.domain, rtype)
