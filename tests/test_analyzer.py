@@ -11,6 +11,7 @@ def test_secureish_domain_fixture():
             "NS": ["ns1.example.net.", "ns2.example.net."],
             "MX": ["10 mail.example.net."],
             "TXT": ['"v=spf1 include:mail.example.net -all"'],
+            "DMARC_TXT": ['"v=DMARC1; p=reject; rua=mailto:dmarc@example.com"'],
         },
         cname_chain=["example.com"],
         nameservers=["ns1.example.net.", "ns2.example.net."],
