@@ -134,11 +134,11 @@ def _resolver(data: DNSData) -> Finding:
     ns = data.resolver_nameservers
     private = [x for x in ns if x.startswith(("10.", "192.168.", "172."))]
     if private:
-        return Finding("RESOLVER-001", "Configured resolver exposure", Status.INFO, Severity.INFO, 100,
+        return Finding("RESOLVER-001", "Configured resolver exposure", Status.PASS, Severity.INFO, 100,
                        "The scan used private/local resolver address(es): " + ", ".join(ns),
                        "Ensure local DNS forwarding and upstream policies use trusted, monitored resolvers.", "resolver",
                        {"nameservers": ns})
-    return Finding("RESOLVER-001", "Configured resolver exposure", Status.INFO, Severity.INFO, 100,
+    return Finding("RESOLVER-001", "Configured resolver exposure", Status.PASS, Severity.INFO, 100,
                    "Resolver(s) used: " + ", ".join(ns), "Use trusted DNS infrastructure and consider protective DNS/validated resolution where appropriate.", "resolver",
                    {"nameservers": ns})
 
