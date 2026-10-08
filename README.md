@@ -62,9 +62,6 @@ CLI / JSON / CSV
 | CSV export | ✅ |
 | Automated tests | ✅ |
 | GitHub Actions CI | ✅ Python 3.10–3.13 |
-| Network exploitation | ❌ |
-| DNS flooding | ❌ |
-| Automatic DNS changes | ❌ |
 
 ---
 
@@ -305,26 +302,6 @@ It does **not**:
 - assess authoritative-server vulnerabilities
 - provide full NIST/CIS compliance mapping
 - inspect private enterprise DNS zones unless the configured resolver can access them
-
----
-
-## 🗺️ Roadmap
-
-Planned improvements:
-
-- [ ] DNSSEC chain validation
-- [ ] explicit DoH / DoT resolver testing
-- [ ] configurable DNS resolver profiles
-- [ ] DKIM selector input and validation
-- [ ] CAA security analysis
-- [ ] wildcard DNS detection
-- [ ] dangling CNAME / takeover-risk indicators
-- [ ] zone-transfer safety checks
-- [ ] baseline comparison and drift detection
-- [ ] HTML security reports
-- [ ] richer CI policy mode
-- [ ] versioned rule profiles
-- [ ] optional threat-intelligence enrichment
 
 ---
 
