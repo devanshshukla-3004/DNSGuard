@@ -88,16 +88,9 @@ def _spf(data: DNSData) -> Finding:
 
 
 def _dmarc(data: DNSData) -> Finding:
-    try:
-        values = _txt(DNSResolver().query(f"_dmarc.{data.domain}", "TXT"))
-    except Exception as exc:
-        values = []
-        error = str(exc)
-    else:
-        error = ""
-    values = [x for x in values if DMARC_RE.match(x)]
+    values = [x for x in _txt(data.records.get("DMARC_TXT", [])) if DMARC_RE.match(x)]
     if not values:
-        evidence = "No DMARC policy was discovered at _dmarc." + (f" Resolver error: {error}" if error else "")
+        evidence = "No DMARC policy was discovered at _dmarc."
         return Finding("MAIL-002", "DMARC policy", Status.FAIL, Severity.HIGH, 20, evidence,
                        "Publish a DMARC policy at _dmarc.<domain> and move toward enforcement after validating reporting.", "mail")
     policy = values[0]
